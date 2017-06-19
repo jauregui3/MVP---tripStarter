@@ -53,6 +53,6 @@ app.post('/login'), function(req,res) {
   })
 }
 
-app.listen(3001, function() {
-  console.log('tripStarter is listening on 3001');
+app.listen(3000, function() {
+  console.log('tripStarter is listening on 3000');
 });
