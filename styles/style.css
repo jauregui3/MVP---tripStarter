@@ -14,11 +14,28 @@ body{
 
 .logout {
   float:right;
-  font-size: 90%;
+  font-size: 125%;
+  color: white;
   padding: 5px, 5px;
   margin-top: 30px;
   margin-bottom: 5px;
   margin-right: 10px;
+}
+
+.login-header {
+  background: #ff3B3F;
+  margin-bottom: 20px;
+  padding: 20px;
+  height: 50px;
+  color: white;
+}
+
+.signup-header {
+  background: #ff3B3F;
+  margin-bottom: 20px;
+  padding: 20px;
+  height: 50px;
+  color: white;
 }
 
 .app-name {

@@ -57,6 +57,13 @@ app.post('/login', function(req,res) {
   });
 });
 
+app.get('/logout', function(req, res) {
+    req.session.destroy(function() {
+      res.sendFile(path.resolve(__dirname + '/../login.html'));
+    });
+  }
+);
+
 app.get('/signup', function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../signup.html'));
 });
@@ -79,6 +86,24 @@ app.post('/signup', function(req, res) {
             res.sendFile(path.resolve(__dirname + '/../index.html'));
           });
       }
+    });
+});
+
+app.get('/places', function(req, res) {
+  db.Place.findAll({where: {username: req.body.username}})
+    .then(function(result) {
+      res.status(200).send(result);
+    });
+});
+
+app.get('/user', function(req, res) {
+  db.User.findAll({
+    where: {
+      username: req.body.username,
+      password: req.body.password
+    }})
+    .then(function(result) {
+      res.status(200).send(result);
     });
 });
 
