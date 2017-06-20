@@ -38,14 +38,33 @@ angular.module('trip-starter')
       $http({
         method: "GET",
         url: '/yelp',
-        params: {city: city, country: country}
-      }).then(function success(result) {
-        console.log(result);
-        that.yelpRestaurants = result;
+        params: {city: city, country: country, search: 'restaurants'}
+      }).then(function success(results) {
+        that.yelpRestaurants = results.data.businesses;
         },
-        function failure(result) {
-          console.log(result.error);
+        function failure(results) {
         });
+
+      $http({
+        method: "GET",
+        url: '/yelp',
+        params: {city: city, country: country, search: 'hotels'}
+      }).then(function success(results) {
+        that.yelpHotels = results.data.businesses;
+        },
+        function failure(results) {
+        });
+
+      $http({
+        method: "GET",
+        url: '/yelp',
+        params: {city: city, country: country, search: 'attractions'}
+      }).then(function success(results) {
+        that.yelpAttractions = results.data.businesses;
+        },
+        function failure(results) {
+        });
+
 
     }
 

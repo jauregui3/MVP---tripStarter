@@ -8,6 +8,54 @@
     <div id="language"><strong>Languages:</strong> {{$ctrl.languages}}</div>
  <!--    <div id="timezones"><strong>Time Zones:</strong> {{$ctrl.timeZones}}</div> -->
     <div id="population"><strong>Country Population:</strong> {{$ctrl.population}}</div>
+    <div id="top-restaurants"><strong>Top Restaurants:</strong></div>
+    <div class="restaurants">
+      <div style="text-decoration: underline;">{{$ctrl.yelpRestaurants[0].name}}</div>
+      <div>Rating: {{$ctrl.yelpRestaurants[0].rating}} stars</div>
+      <a href={{$ctrl.yelpRestaurants[0].url}} target="_blank"><img ng-src={{$ctrl.yelpRestaurants[0].image_url}} style="width: 153px; height: 102px"></a>
+    </div>
+    <div class="restaurants">
+      <div style="text-decoration: underline;">{{$ctrl.yelpRestaurants[1].name}}</div>
+      <div>Rating: {{$ctrl.yelpRestaurants[1].rating}} stars</div>
+      <a href={{$ctrl.yelpRestaurants[1].url}} target="_blank"><img ng-src={{$ctrl.yelpRestaurants[1].image_url}} style="width: 153px; height: 102px"></a>
+    </div>
+    <div class="restaurants">
+      <div style="text-decoration: underline;">{{$ctrl.yelpRestaurants[2].name}}</div>
+      <div>Rating: {{$ctrl.yelpRestaurants[2].rating}} stars</div>
+      <a href={{$ctrl.yelpRestaurants[2].url}} target="_blank"><img ng-src={{$ctrl.yelpRestaurants[2].image_url}} style="width: 153px; height: 102px"></a>
+    </div>
+    <div id="top-hotels"><strong>Top Hotels:</strong></div>
+    <div class="hotels">
+      <div style="text-decoration: underline;">{{$ctrl.yelpHotels[0].name}}</div>
+      <div>Rating: {{$ctrl.yelpHotels[0].rating}} stars</div>
+      <a href={{$ctrl.yelpHotels[0].url}} target="_blank"><img ng-src={{$ctrl.yelpHotels[0].image_url}} style="width: 153px; height: 102px"></a>
+    </div>
+    <div class="hotels">
+      <div style="text-decoration: underline;">{{$ctrl.yelpHotels[1].name}}</div>
+      <div>Rating: {{$ctrl.yelpHotels[1].rating}} stars</div>
+      <a href={{$ctrl.yelpHotels[1].url}} target="_blank"><img ng-src={{$ctrl.yelpHotels[1].image_url}} style="width: 153px; height: 102px"></a>
+    </div>
+    <div class="hotels">
+      <div style="text-decoration: underline;">{{$ctrl.yelpHotels[2].name}}</div>
+      <div>Rating: {{$ctrl.yelpHotels[2].rating}} stars</div>
+      <a href={{$ctrl.yelpHotels[2].url}} target="_blank"><img ng-src={{$ctrl.yelpHotels[2].image_url}} style="width: 153px; height: 102px"></a>
+    </div>
+    <div id="top-attractions"><strong>Top Attractions:</strong></div>
+    <div class="attractions">
+      <div style="text-decoration: underline;">{{$ctrl.yelpAttractions[0].name}}</div>
+      <div>Rating: {{$ctrl.yelpAttractions[0].rating}} stars</div>
+      <a href={{$ctrl.yelpAttractions[0].url}} target="_blank"><img ng-src={{$ctrl.yelpAttractions[0].image_url}} style="width: 153px; height: 102px"></a>
+    </div>
+    <div class="attractions">
+      <div style="text-decoration: underline;">{{$ctrl.yelpAttractions[1].name}}</div>
+      <div>Rating: {{$ctrl.yelpAttractions[1].rating}} stars</div>
+      <a href={{$ctrl.yelpAttractions[1].url}} target="_blank"><img ng-src={{$ctrl.yelpAttractions[1].image_url}} style="width: 153px; height: 102px"></a>
+    </div>
+    <div class="attractions">
+      <div style="text-decoration: underline;">{{$ctrl.yelpAttractions[2].name}}</div>
+      <div>Rating: {{$ctrl.yelpAttractions[2].rating}} stars</div>
+      <a href={{$ctrl.yelpAttractions[2].url}} target="_blank"><img ng-src={{$ctrl.yelpAttractions[2].image_url}} style="width: 153px; height: 102px"></a>
+    </div>
     <div id="notes"><strong>Notes: </strong>
       <input class="form-control" type="text" ng-model="$ctrl.input"/>
       <button class="btn" ng-click="$ctrl.submit($ctrl.place.city)">Add Note!</button>

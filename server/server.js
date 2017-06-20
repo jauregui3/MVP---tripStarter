@@ -173,7 +173,7 @@ app.post('/notes', function(req, res) {
 // attempt at yelp api
 app.get('/yelp', function(req, res) {
   var location = req.query.city + ', ' + req.query.country;
-  yelp.search({term: 'restaurants', location: location, limit: 3, sort_by: 'rating'})
+  yelp.search({term: req.query.search, location: location, limit: 3, sort_by: 'rating'})
   .then(function(data) {
     console.log(data);
     res.status(200).send(data);
