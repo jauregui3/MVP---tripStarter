@@ -1,0 +1,13 @@
+<li class="places-list-entry">
+  <div class="media-body">
+    <div class="place-list-entry" ng-click="$ctrl.handleClick($ctrl.place.country)">{{$ctrl.place.city}}, {{$ctrl.place.country}} </div>
+  </div>
+  <div class="info" ng-hide="$ctrl.unavailable">
+    <img src="{{$ctrl.flag}}" style="width: 30%; height: 30%" border='1'>
+    <div id="currency"><strong>Currencies:</strong> {{$ctrl.currencies}}</div>
+    <div id="language"><strong>Languages:</strong> {{$ctrl.languages}}</div>
+    <div id="timezones"><strong>Time Zones:</strong> {{$ctrl.timeZones}}</div>
+    <div id="population"><strong>Population:</strong> {{$ctrl.population}}</div>
+
+  </div>
+</li>

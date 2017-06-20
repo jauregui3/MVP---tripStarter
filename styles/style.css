@@ -8,17 +8,23 @@ body{
 .topbar {
   background: #ff3B3F;
   margin-bottom: 20px;
-  padding: 20px;
-  height: 50px;
+  padding: 10px;
+  height: 70px;
 }
 
 .logout {
+  clear: right;
   float:right;
   font-size: 125%;
   color: white;
-  padding: 5px, 5px;
-  margin-top: 30px;
-  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.user-name {
+  float:right;
+  font-size: 125%;
+  color: white;
+  margin-bottom: 15px;
   margin-right: 10px;
 }
 
@@ -63,4 +69,8 @@ body{
 .country {
   margin-right: : 20px;
   margin-left: 5px;
+}
+
+.info {
+  padding-bottom: 20px;
 }

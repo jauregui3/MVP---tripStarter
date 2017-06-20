@@ -1,7 +1,6 @@
 var express = require('express');
 var db = require('./db');
 var path = require('path');
-var router = require('./routes.js');
 var bodyParser = require('body-parser');
 // var http = require('http');
 // var bodyParser = require('body-parser');
@@ -45,10 +44,11 @@ app.post('/login', function(req,res) {
     }
   })
   .then(function(results) {
-    console.log(results);
+    // console.log(results);
     if (results.length > 0) {
       req.session.regenerate(function() {
         req.session.user = results[0].username;
+        req.session.userid = results[0].id;
         res.sendFile(path.resolve(__dirname + '/../index.html'));
       });
     } else {
@@ -69,7 +69,7 @@ app.get('/signup', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
-  console.log(req.body);
+  // console.log(req.body);
   db.User.findAll({where: {username: req.body.username}})
     .then(function(results) {
       if (results.length > 0) {
@@ -90,21 +90,42 @@ app.post('/signup', function(req, res) {
 });
 
 app.get('/places', function(req, res) {
-  db.Place.findAll({where: {username: req.body.username}})
+  db.Place.findAll({where: {userid: req.session.userid}})
     .then(function(result) {
       res.status(200).send(result);
     });
 });
 
 app.get('/user', function(req, res) {
+  // console.log('this is a req', req.session.user);
+  var user = req.session.user.toLowerCase();
   db.User.findAll({
     where: {
-      username: req.body.username,
-      password: req.body.password
+      username: user
     }})
     .then(function(result) {
+      // console.log(result);
       res.status(200).send(result);
     });
+});
+
+app.post('/place', function(req, res) {
+  // var user = req.session.user.toLowerCase();
+  // console.log('this is req to /places', req);
+  var user = req.session.user.toLowerCase();
+  // console.log(user);
+  console.log('this is the id', req.session.userid);
+  db.User.findAll({where: {username: user}})
+  .spread(function(user, created) {
+    console.log('this is the user in user finall', user.dataValues.id);
+    db.Place.create({
+      UserId: user.dataValues.id,
+      city: req.body.city,
+      country: req.body.country
+    }).then(function(err, results) {
+      res.sendStatus(201);
+    });
+  });
 });
 
 app.listen(3000, function() {

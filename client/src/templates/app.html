@@ -6,10 +6,10 @@
   </nav>
   <div class="my-list">
     <div>
-      <location-selector></location-selector>
+      <location-selector places="$ctrl.places" reset="$ctrl.resetList" render="$ctrl.placesService"></location-selector>
     </div>
     <div>
-      <review-list></review-list>
+      <places-list places="$ctrl.places" countries-service="$ctrl.restCountriesService"></places-list>
     </div>
   <div>
 </div>
