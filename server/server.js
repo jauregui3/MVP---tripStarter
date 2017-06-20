@@ -100,6 +100,9 @@ app.get('/places', function(req, res) {
     });
 });
 
+// May have database issue with notes --either get or post to /notes isn't working properly
+// If two users have the same city listed, notes won't add
+
 app.get('/notes', function(req, res) {
   db.Place.findAll({where: {city: req.query.city}})
     .spread(function(place, created) {
