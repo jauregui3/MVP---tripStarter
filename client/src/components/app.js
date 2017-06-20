@@ -16,12 +16,11 @@ angular.module('trip-starter', [])
       that.places = places.data;
     }
 
-    this.restNotes = function(notes) {
+    this.resetNotes = function(notes) {
       that.notes = notes.data;
     }
 
     this.placesService.search(this.resetList.bind(this));
-    this.notesService.search(this.reseNotes).bind(this));
 
     // this.placesService.search(function(places) {
     //   console.log(places.data[0].country);
