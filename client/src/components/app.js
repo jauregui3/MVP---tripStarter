@@ -1,11 +1,11 @@
 angular.module('trip-starter', [])
 
 .component('app', {
-  controller: function($http, userService, placesService, restCountriesService, yelpService) {
+  controller: function($http, userService, placesService, restCountriesService, notesService) {
     this.userService = userService;
     this.placesService = placesService;
     this.restCountriesService = restCountriesService;
-    this.yelpService = yelpService;
+    this.notesService = notesService;
 
     var that = this;
     this.userService.search(function(user) {
@@ -16,7 +16,12 @@ angular.module('trip-starter', [])
       that.places = places.data;
     }
 
+    this.restNotes = function(notes) {
+      that.notes = notes.data;
+    }
+
     this.placesService.search(this.resetList.bind(this));
+    this.notesService.search(this.reseNotes).bind(this));
 
     // this.placesService.search(function(places) {
     //   console.log(places.data[0].country);

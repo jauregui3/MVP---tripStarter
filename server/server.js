@@ -96,6 +96,20 @@ app.get('/places', function(req, res) {
     });
 });
 
+app.get('/notes', function(req, res) {
+  db.Place.findAll({where: {city: req.body.city}})
+    .spread(function(place, created) {
+      db.Note.findAll({
+        where: {
+          UserId: req.session.userid,
+          PlaceId: place.dataValues.id
+        }})
+    })
+    .then(function(result) {
+      res.status(200).send(result);
+    });
+});
+
 app.get('/user', function(req, res) {
   // console.log('this is a req', req.session.user);
   var user = req.session.user.toLowerCase();
@@ -122,6 +136,22 @@ app.post('/place', function(req, res) {
       UserId: user.dataValues.id,
       city: req.body.city,
       country: req.body.country
+    }).then(function(err, results) {
+      res.sendStatus(201);
+    });
+  });
+});
+
+app.post('/notes', function(req, res) {
+  var user = req.session.user.toLowerCase();
+  console.log('this is the id', req.session.userid);
+  db.Place.findAll({where: {UserId: req.session.userid}})
+  .spread(function(place, created) {
+    console.log('this is the user in user finall', user.dataValues.id);
+    db.Notes.create({
+      PlaceId: place.dataValues.id,
+      UserId: req.session.userid,
+      note: req.body.note
     }).then(function(err, results) {
       res.sendStatus(201);
     });

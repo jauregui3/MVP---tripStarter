@@ -2,8 +2,7 @@ angular.module('trip-starter')
 .component('placesListEntry', {
   templateUrl: "src/templates/placesListEntry.html",
   controller: function() {
-    this.handleClick = function(country) {
-      console.log(country);
+    this.handleClick = function(city, country) {
       var that = this;
       this.unavailable = !this.unavailable;
       this.countriesService.search(country, function(result) {
@@ -22,25 +21,40 @@ angular.module('trip-starter')
 
         // time zones
         that.timeZones = result.data[0].timezones.join(', ');
-        that.population = result.data[0].population;
+
+        //population
+        that.population = result.data[0].population.toLocaleString();
 
         // flag
         that.flag = result.data[0].flag;
 
       });
-
-      console.log(this.yelpService);
-      this.yelpService.search(function(result) {
-        console.log(result);
-      });
-
-
     }
+
+    this.submit = function(city) {
+      var that = this;
+      $http({
+        method: "POST",
+        url: '/notes',
+        data: {note: this.note}
+      }).then(function success() {
+        that.notesService.search(city, function(notes) {
+          that.resetNotes(notes);
+        });
+        console.log('success!');
+      },
+      function failure(error) {
+        console.log(error);
+      });
+      this.note = '';
+    };
+
     this.unavailable = true;
   },
   bindings: {
     place: '<',
     countriesService: '<',
-    yelpService: '<'
+    notesService: '<',
+    resetNotes: '<'
   }
 });
