@@ -5,7 +5,6 @@ angular.module('trip-starter')
       method: "GET",
       url: '/notes',
       params: {city: city},
-      // data: {city: city},
     }).then(function success(result) {callback(result);}, function failure(result) {console.log(result.error);});
   };
 });

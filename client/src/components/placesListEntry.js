@@ -39,7 +39,13 @@ angular.module('trip-starter')
         method: "GET",
         url: '/yelp',
         params: {city: city, country: country}
-      }).then(function success(result) {callback(result);}, function failure(result) {console.log(result.error);});
+      }).then(function success(result) {
+        console.log(result);
+        that.yelpRestaurants = result;
+        },
+        function failure(result) {
+          console.log(result.error);
+        });
 
     }
 

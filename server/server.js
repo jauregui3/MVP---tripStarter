@@ -2,13 +2,13 @@ var express = require('express');
 var db = require('./db');
 var path = require('path');
 var bodyParser = require('body-parser');
+var yelpApi = require('./config/yelp.js')
 var Yelp = require('yelp-api-v3');
 var yelp = new Yelp({
-  app_id: window.clientId,
-  app_secret: window.clientSecret
-})
-// var http = require('http');
-// var bodyParser = require('body-parser');
+  app_id: yelpApi.clientId,
+  app_secret: yelpApi.clientSecret
+});
+
 
 var app = express();
 
@@ -29,7 +29,6 @@ app.get('/', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../login.html'));
   } else {
     res.sendFile(path.resolve(__dirname + '/../index.html'));
-    // res.render('index', {testKey: req.session.user});
   }
 });
 
@@ -112,7 +111,7 @@ app.get('/notes', function(req, res) {
           PlaceId: place.dataValues.id,
         }})
         .then(function(result) {
-          console.log(result);
+          // console.log(result);
           res.status(200).send(result);
         });
     });
@@ -173,6 +172,15 @@ app.post('/notes', function(req, res) {
 
 // attempt at yelp api
 app.get('/yelp', function(req, res) {
+  var location = req.query.city + ', ' + req.query.country;
+  yelp.search({term: 'restaurants', location: location, limit: 3, sort_by: 'rating'})
+  .then(function(data) {
+    console.log(data);
+    res.status(200).send(data);
+  })
+  .catch(function(err) {
+    console.error(err);
+  })
 
 });
 
