@@ -24,11 +24,6 @@ Note.belongsTo(User);
 Place.hasMany(Note);
 User.hasMany(Note);
 
-
-// User.belongsTo(Place);
-// Place.hasMany(User);
-
-
 User.sync();
 Place.sync();
 Note.sync();
