@@ -27,7 +27,12 @@ angular.module('trip-starter')
         // flag
         that.flag = result.data[0].flag;
 
-      })
+      });
+
+      console.log(this.yelpService);
+      this.yelpService.search(function(result) {
+        console.log(result);
+      });
 
 
     }
@@ -35,6 +40,7 @@ angular.module('trip-starter')
   },
   bindings: {
     place: '<',
-    countriesService: '<'
+    countriesService: '<',
+    yelpService: '<'
   }
 });

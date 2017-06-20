@@ -6,6 +6,7 @@ angular.module('trip-starter')
   },
   bindings: {
     places: '<',
-    countriesService: '<'
+    countriesService: '<',
+    yelpService: '<'
   }
 });

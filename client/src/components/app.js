@@ -1,10 +1,11 @@
 angular.module('trip-starter', [])
 
 .component('app', {
-  controller: function($http, userService, placesService, restCountriesService) {
+  controller: function($http, userService, placesService, restCountriesService, yelpService) {
     this.userService = userService;
     this.placesService = placesService;
     this.restCountriesService = restCountriesService;
+    this.yelpService = yelpService;
 
     var that = this;
     this.userService.search(function(user) {
