@@ -2,6 +2,11 @@ var express = require('express');
 var db = require('./db');
 var path = require('path');
 var bodyParser = require('body-parser');
+var Yelp = require('yelp-api-v3');
+var yelp = new Yelp({
+  app_id: window.clientId,
+  app_secret: window.clientSecret
+})
 // var http = require('http');
 // var bodyParser = require('body-parser');
 
@@ -165,6 +170,12 @@ app.post('/notes', function(req, res) {
     });
   });
 });
+
+// attempt at yelp api
+app.get('/yelp', function(req, res) {
+
+});
+
 
 app.listen(3000, function() {
   console.log('tripStarter is listening on 3000');

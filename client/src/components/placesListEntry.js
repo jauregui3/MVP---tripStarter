@@ -28,12 +28,19 @@ angular.module('trip-starter')
         // flag
         that.flag = result.data[0].flag;
 
-        that.notesService.search(city, function(notes) {
-          that.notes = notes.data;
-          // that.resetNotes(notes);
-        });
-
       });
+      // load notes on click
+      that.notesService.search(city, function(notes) {
+        that.notes = notes.data;
+      });
+
+      // attempt at yelp api
+      $http({
+        method: "GET",
+        url: '/yelp',
+        params: {city: city, country: country}
+      }).then(function success(result) {callback(result);}, function failure(result) {console.log(result.error);});
+
     }
 
     this.submit = function(city) {
@@ -49,7 +56,6 @@ angular.module('trip-starter')
         that.notesService.search(city, function(notes) {
           console.log(notes.data)
           that.notes = notes.data;
-          // that.resetNotes(notes);
         });
         console.log('success!');
       },
