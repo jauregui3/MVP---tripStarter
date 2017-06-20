@@ -35,3 +35,4 @@ Note.sync();
 
 exports.User = User;
 exports.Place = Place;
+exports.Note = Note;

@@ -9,8 +9,12 @@
  <!--    <div id="timezones"><strong>Time Zones:</strong> {{$ctrl.timeZones}}</div> -->
     <div id="population"><strong>Country Population:</strong> {{$ctrl.population}}</div>
     <div id="notes"><strong>Notes: </strong>
-      <input class="form-control" type="text" ng-model="$ctrl.note"/>
+      <input class="form-control" type="text" ng-model="$ctrl.input"/>
       <button class="btn" ng-click="$ctrl.submit($ctrl.place.city)">Add Note!</button>
+    <div>
+      <ul class="notes-list">
+        <notes note="note" class="notes-list" ng-repeat="note in $ctrl.notes"></notes>
+      </ul>
     </div>
   </div>
 </li>

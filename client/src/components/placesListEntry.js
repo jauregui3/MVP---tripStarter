@@ -1,7 +1,7 @@
 angular.module('trip-starter')
 .component('placesListEntry', {
   templateUrl: "src/templates/placesListEntry.html",
-  controller: function() {
+  controller: function($http) {
     this.handleClick = function(city, country) {
       var that = this;
       this.unavailable = !this.unavailable;
@@ -28,6 +28,11 @@ angular.module('trip-starter')
         // flag
         that.flag = result.data[0].flag;
 
+        that.notesService.search(city, function(notes) {
+          that.notes = notes.data;
+          // that.resetNotes(notes);
+        });
+
       });
     }
 
@@ -36,17 +41,22 @@ angular.module('trip-starter')
       $http({
         method: "POST",
         url: '/notes',
-        data: {note: this.note}
+        data: {
+          note: this.input,
+          city: city
+        }
       }).then(function success() {
         that.notesService.search(city, function(notes) {
-          that.resetNotes(notes);
+          console.log(notes.data)
+          that.notes = notes.data;
+          // that.resetNotes(notes);
         });
         console.log('success!');
       },
       function failure(error) {
         console.log(error);
       });
-      this.note = '';
+      this.input = '';
     };
 
     this.unavailable = true;

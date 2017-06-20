@@ -97,16 +97,19 @@ app.get('/places', function(req, res) {
 });
 
 app.get('/notes', function(req, res) {
-  db.Place.findAll({where: {city: req.body.city}})
+  // console.log('this is the QUERY', req);
+  db.Place.findAll({where: {city: req.query.city}})
     .spread(function(place, created) {
+      console.log(place);
       db.Note.findAll({
         where: {
           UserId: req.session.userid,
-          PlaceId: place.dataValues.id
+          PlaceId: place.dataValues.id,
         }})
-    })
-    .then(function(result) {
-      res.status(200).send(result);
+        .then(function(result) {
+          console.log(result);
+          res.status(200).send(result);
+        });
     });
 });
 
@@ -128,10 +131,10 @@ app.post('/place', function(req, res) {
   // console.log('this is req to /places', req);
   var user = req.session.user.toLowerCase();
   // console.log(user);
-  console.log('this is the id', req.session.userid);
+  // console.log('this is the id', req.session.userid);
   db.User.findAll({where: {username: user}})
   .spread(function(user, created) {
-    console.log('this is the user in user finall', user.dataValues.id);
+    // console.log('this is the user in user finall', user.dataValues.id);
     db.Place.create({
       UserId: user.dataValues.id,
       city: req.body.city,
@@ -144,11 +147,16 @@ app.post('/place', function(req, res) {
 
 app.post('/notes', function(req, res) {
   var user = req.session.user.toLowerCase();
-  console.log('this is the id', req.session.userid);
-  db.Place.findAll({where: {UserId: req.session.userid}})
+  // console.log('this is the body', req.body);
+  db.Place.findAll({
+    where: {
+      UserId: req.session.userid,
+      city: req.body.city
+    }})
   .spread(function(place, created) {
-    console.log('this is the user in user finall', user.dataValues.id);
-    db.Notes.create({
+    // console.log(place);
+    // console.log('this is the NOTE NOTE NOTE', req.body.note);
+    db.Note.create({
       PlaceId: place.dataValues.id,
       UserId: req.session.userid,
       note: req.body.note
