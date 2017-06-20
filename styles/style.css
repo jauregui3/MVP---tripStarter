@@ -54,7 +54,7 @@ body{
 }
 
 .selector {
-  background: #A9A9A9;
+  background: #CAEBF2;
   padding: 5px;
 /*  width: 50%;*/
   margin: auto;
@@ -73,4 +73,18 @@ body{
 
 .info {
   padding-bottom: 20px;
+  margin-right: 200px;
+  font-size: 18px;
+}
+.places-list {
+  margin-left: 100px;
+}
+
+.list-entry {
+  margin: 10px;
+}
+
+.place-list-entry {
+/*  font-weight: bold;*/
+  font-size: 24px;
 }
