@@ -1,13 +1,14 @@
 <li class="places-list-entry">
   <div class="media-body">
-    <div class="place-list-entry" ng-click="$ctrl.handleClick($ctrl.place.city, $ctrl.place.country)">{{$ctrl.place.city}}, {{$ctrl.place.country}} </div>
+    <div class="place-list-entry" ng-click="$ctrl.handleClick($ctrl.place.city, $ctrl.place.country)">{{$ctrl.place.city}}, {{$ctrl.place.country}}
+    </div>
   </div>
   <div class="info" ng-hide="$ctrl.unavailable">
     <img ng-src="{{$ctrl.flag}}" style="width: 200px; height: 120px;">
     <div id="currency"><strong>Currencies:</strong> {{$ctrl.currencies}}</div>
     <div id="language"><strong>Languages:</strong> {{$ctrl.languages}}</div>
     <div id="population"><strong>Country Population:</strong> {{$ctrl.population}}</div>
-    <div id="top-restaurants"><strong>Top Restaurants:</strong></div>
+    <div id="top-restaurants" style="margin-top: 10px;"><strong>Top Restaurants:</strong></div>
     <div class="restaurants">
       <div style="text-decoration: underline;">{{$ctrl.yelpRestaurants[0].name}}</div>
       <div>Rating: {{$ctrl.yelpRestaurants[0].rating}} stars</div>
