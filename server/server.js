@@ -9,7 +9,6 @@ var yelp = new Yelp({
   app_secret: yelpApi.clientSecret
 });
 
-
 var app = express();
 
 app.use(bodyParser.json());
