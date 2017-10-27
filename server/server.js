@@ -14,7 +14,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-// localhost 127.0.0.1
+
 var session = require('express-session');
 app.use(session({
   secret: 'my secret',
@@ -48,7 +48,6 @@ app.post('/login', function(req,res) {
     }
   })
   .then(function(results) {
-    // console.log(results);
     if (results.length > 0) {
       req.session.regenerate(function() {
         req.session.user = results[0].username;
@@ -73,7 +72,6 @@ app.get('/signup', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
-  // console.log(req.body);
   db.User.findAll({where: {username: req.body.username}})
     .then(function(results) {
       if (results.length > 0) {
