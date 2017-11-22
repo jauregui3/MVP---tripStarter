@@ -6,7 +6,7 @@ angular.module('trip-starter')
       var self = this;
       this.unavailable = !this.unavailable;
       this.countriesService.search(country, function(result) {
-        console.log(result);
+
         // currencies
         var currencies = result.data[0].currencies;
         self.currencies = currencies.map(function(currency) {
@@ -34,7 +34,8 @@ angular.module('trip-starter')
         self.notes = notes.data;
       });
 
-      // attempt at yelp api
+      // Make GET requests to Yelp API on location click for restaurants, hotels, and attractions
+
       $http({
         method: "GET",
         url: '/yelp',
@@ -68,6 +69,7 @@ angular.module('trip-starter')
 
     }
 
+    // submit note
     this.submit = function(city) {
       var self = this;
       $http({
