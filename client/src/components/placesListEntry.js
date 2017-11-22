@@ -3,35 +3,35 @@ angular.module('trip-starter')
   templateUrl: "src/templates/placesListEntry.html",
   controller: function($http) {
     this.handleClick = function(city, country) {
-      var that = this;
+      var self = this;
       this.unavailable = !this.unavailable;
       this.countriesService.search(country, function(result) {
         console.log(result);
         // currencies
         var currencies = result.data[0].currencies;
-        that.currencies = currencies.map(function(currency) {
+        self.currencies = currencies.map(function(currency) {
           return currency.name
         }).join(', ')
 
         // languages
         var languages = result.data[0].languages;
-        that.languages = languages.map(function(language) {
+        self.languages = languages.map(function(language) {
           return language.name
         }).join(', ')
 
         // time zones
-        that.timeZones = result.data[0].timezones.join(', ');
+        self.timeZones = result.data[0].timezones.join(', ');
 
         //population
-        that.population = result.data[0].population.toLocaleString();
+        self.population = result.data[0].population.toLocaleString();
 
         // flag
-        that.flag = result.data[0].flag;
+        self.flag = result.data[0].flag;
 
       });
       // load notes on click
-      that.notesService.search(city, function(notes) {
-        that.notes = notes.data;
+      self.notesService.search(city, function(notes) {
+        self.notes = notes.data;
       });
 
       // attempt at yelp api
@@ -40,7 +40,7 @@ angular.module('trip-starter')
         url: '/yelp',
         params: {city: city, country: country, search: 'restaurants'}
       }).then(function success(results) {
-        that.yelpRestaurants = results.data.businesses;
+        self.yelpRestaurants = results.data.businesses;
         },
         function failure(results) {
         });
@@ -50,7 +50,7 @@ angular.module('trip-starter')
         url: '/yelp',
         params: {city: city, country: country, search: 'hotels'}
       }).then(function success(results) {
-        that.yelpHotels = results.data.businesses;
+        self.yelpHotels = results.data.businesses;
         },
         function failure(results) {
         });
@@ -60,7 +60,7 @@ angular.module('trip-starter')
         url: '/yelp',
         params: {city: city, country: country, search: 'attractions'}
       }).then(function success(results) {
-        that.yelpAttractions = results.data.businesses;
+        self.yelpAttractions = results.data.businesses;
         },
         function failure(results) {
         });
@@ -69,7 +69,7 @@ angular.module('trip-starter')
     }
 
     this.submit = function(city) {
-      var that = this;
+      var self = this;
       $http({
         method: "POST",
         url: '/notes',
@@ -78,9 +78,9 @@ angular.module('trip-starter')
           city: city
         }
       }).then(function success() {
-        that.notesService.search(city, function(notes) {
+        self.notesService.search(city, function(notes) {
           console.log(notes.data)
-          that.notes = notes.data;
+          self.notes = notes.data;
         });
         console.log('success!');
       },
