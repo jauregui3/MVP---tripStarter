@@ -8,6 +8,9 @@
     <div id="currency"><strong>Currencies:</strong> {{$ctrl.currencies}}</div>
     <div id="language"><strong>Languages:</strong> {{$ctrl.languages}}</div>
     <div id="population"><strong>Country Population:</strong> {{$ctrl.population}}</div>
+
+<!--     top restaurants-->
+
     <div id="top-restaurants" style="margin-top: 10px;"><strong>Top Restaurants:</strong></div>
     <div class="restaurants">
       <div style="text-decoration: underline;">{{$ctrl.yelpRestaurants[0].name}}</div>
@@ -24,6 +27,9 @@
       <div>Rating: {{$ctrl.yelpRestaurants[2].rating}} stars</div>
       <a href={{$ctrl.yelpRestaurants[2].url}} target="_blank"><img ng-src={{$ctrl.yelpRestaurants[2].image_url}} style="width: 153px; height: 102px"></a>
     </div>
+
+<!--     top hotels-->
+
     <div id="top-hotels"><strong>Top Hotels:</strong></div>
     <div class="hotels">
       <div style="text-decoration: underline;">{{$ctrl.yelpHotels[0].name}}</div>
@@ -40,6 +46,9 @@
       <div>Rating: {{$ctrl.yelpHotels[2].rating}} stars</div>
       <a href={{$ctrl.yelpHotels[2].url}} target="_blank"><img ng-src={{$ctrl.yelpHotels[2].image_url}} style="width: 153px; height: 102px;"></a>
     </div>
+
+<!--     top attractions -->
+
     <div id="top-attractions"><strong>Top Attractions:</strong></div>
     <div class="attractions">
       <div style="text-decoration: underline;">{{$ctrl.yelpAttractions[0].name}}</div>
