@@ -4,7 +4,13 @@
     </div>
   </div>
   <div class="info" ng-hide="$ctrl.unavailable">
+
+<!--     country flag, if available -->
+
     <img ng-src="{{$ctrl.flag}}" style="width: 200px; height: 120px;">
+
+<!--     country info -->
+
     <div id="currency"><strong>Currencies:</strong> {{$ctrl.currencies}}</div>
     <div id="language"><strong>Languages:</strong> {{$ctrl.languages}}</div>
     <div id="population"><strong>Country Population:</strong> {{$ctrl.population}}</div>
@@ -65,6 +71,9 @@
       <div>Rating: {{$ctrl.yelpAttractions[2].rating}} stars</div>
       <a href={{$ctrl.yelpAttractions[2].url}} target="_blank"><img ng-src={{$ctrl.yelpAttractions[2].image_url}} style="width: 153px; height: 102px"></a>
     </div>
+
+<!--     notes sections -->
+
     <div id="notes"><strong>Notes: </strong>
       <input class="form-control" type="text" ng-model="$ctrl.input"/>
       <button class="btn" ng-click="$ctrl.submit($ctrl.place.city)">Add Note!</button>
