@@ -4,14 +4,14 @@ angular.module('trip-starter')
   templateUrl: 'src/templates/locationSelector.html',
   controller: function($http) {
     this.handleClick = function() {
-      var that = this;
+      var self = this;
       $http({
         method: "POST",
         url: '/place',
         data: {city: this.city, country: this.country}
       }).then(function success() {
-        that.placesService.search(function(places) {
-          that.resetList(places);
+        self.placesService.search(function(places) {
+          self.resetList(places);
         });
         console.log('success!');
       },
