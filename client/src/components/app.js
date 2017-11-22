@@ -8,18 +8,18 @@ angular.module('trip-starter', [])
     this.restCountriesService = restCountriesService;
     this.notesService = notesService;
 
-    var that = this;
+    var self = this;
 
     this.userService.search(function(user) {
-      that.user = user.username;
+      self.user = user.username;
     });
 
     this.resetList = function(places) {
-      that.places = places.data;
+      self.places = places.data;
     }
 
     this.resetNotes = function(notes) {
-      that.notes = notes.data;
+      self.notes = notes.data;
     }
 
     this.placesService.search(this.resetList.bind(this));
