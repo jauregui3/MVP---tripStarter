@@ -4,7 +4,10 @@ angular.module('trip-starter')
   controller: function($http) {
     this.handleClick = function(city, country) {
       var self = this;
+
+      // if set to true, html will hide coutnry details
       this.unavailable = !this.unavailable;
+
       this.countriesService.search(country, function(result) {
 
         // currencies
