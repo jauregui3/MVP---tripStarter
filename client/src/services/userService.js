@@ -4,6 +4,12 @@ angular.module('trip-starter')
     $http({
       method: "GET",
       url: '/user'
-    }).then(function success(result) {callback(result.data[0]);}, function failure(result) {console.log('in the failure section', result.error);});
+    }).then(
+      function success(result) {
+        callback(result.data[0]);
+      },
+      function failure(result) {
+        console.log('Error: ', result.error);
+      });
   };
 });
