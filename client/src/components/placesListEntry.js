@@ -38,6 +38,7 @@ angular.module('trip-starter')
       });
 
       // Make GET requests to Yelp API on location click for restaurants, hotels, and attractions
+      // Consider making Yelp requests a service
 
       $http({
         method: "GET",
