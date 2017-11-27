@@ -2,6 +2,9 @@ angular.module('trip-starter')
 .component('placesListEntry', {
   templateUrl: "src/templates/placesListEntry.html",
   controller: function($http) {
+
+    // handleClick function should be refactored and cleaned up
+    // consider using services and helper functions
     this.handleClick = function(city, country) {
       var self = this;
 
